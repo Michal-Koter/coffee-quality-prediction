@@ -1,0 +1,1 @@
+# AI model to predict arabica coffee quality
