@@ -34,6 +34,8 @@ def main():
     df = clean_quakers(df)
     df = clean_color(df)
 
+    df = clean_total_points(df)
+
     df.to_csv('data/coffee_data_cleaned.csv')
 
 
@@ -178,6 +180,12 @@ def clean_color(df):
 
     return df
 
+
+def clean_total_points(df):
+    index_to_remove = df[df['Total_Cup_Points'] == 0].index
+    df = df.drop(index_to_remove, axis=0)
+
+    return df
 
 if __name__ == '__main__':
     pd.set_option('display.max_rows', 1000)
