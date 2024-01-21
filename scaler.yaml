@@ -1,5 +1,5 @@
 X_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
-  _sklearn_version: 1.3.2
+  _sklearn_version: 1.4.0
   clip: false
   copy: true
   data_max_: !!python/object/apply:numpy.core.multiarray._reconstruct
@@ -12,7 +12,7 @@ X_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
     state: !!python/tuple
     - 1
     - !!python/tuple
-      - 6
+      - 5
     - &id002 !!python/object/apply:numpy.dtype
       args:
       - f8
@@ -29,7 +29,7 @@ X_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
       - 0
     - false
     - !!binary |
-      AAAAAAAANEAAAAAAAAAzQAAAAAAAADJAAAAAAAAAEEDsUbgehevBPwAAAAAAABRA
+      AAAAAAAANEAAAAAAAAAzQAAAAAAAADJAAAAAAAAAEEAAAAAAAAAUQA==
   data_min_: !!python/object/apply:numpy.core.multiarray._reconstruct
     args:
     - *id001
@@ -40,11 +40,11 @@ X_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
     state: !!python/tuple
     - 1
     - !!python/tuple
-      - 6
+      - 5
     - *id002
     - false
     - !!binary |
-      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB7FK5H4Xq0PwAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
   data_range_: !!python/object/apply:numpy.core.multiarray._reconstruct
     args:
     - *id001
@@ -55,11 +55,11 @@ X_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
     state: !!python/tuple
     - 1
     - !!python/tuple
-      - 6
+      - 5
     - *id002
     - false
     - !!binary |
-      AAAAAAAANEAAAAAAAAAzQAAAAAAAADJAAAAAAAAAEEC6HoXrUbiuPwAAAAAAABRA
+      AAAAAAAANEAAAAAAAAAzQAAAAAAAADJAAAAAAAAAEEAAAAAAAAAUQA==
   feature_range: &id003 !!python/tuple
   - 0
   - 1
@@ -73,12 +73,12 @@ X_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
     state: !!python/tuple
     - 1
     - !!python/tuple
-      - 6
+      - 5
     - *id002
     - false
     - !!binary |
-      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVVVVVVVX1vwAAAAAAAAAA
-  n_features_in_: 6
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+  n_features_in_: 5
   n_samples_seen_: 1264
   scale_: !!python/object/apply:numpy.core.multiarray._reconstruct
     args:
@@ -90,13 +90,13 @@ X_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
     state: !!python/tuple
     - 1
     - !!python/tuple
-      - 6
+      - 5
     - *id002
     - false
     - !!binary |
-      mpmZmZmZqT8or6G8hvKqPxzHcRzHcaw/AAAAAAAA0D+qqqqqqqowQJqZmZmZmck/
+      mpmZmZmZqT8or6G8hvKqPxzHcRzHcaw/AAAAAAAA0D+amZmZmZnJPw==
 Y_min_max_scaler: !!python/object:sklearn.preprocessing._data.MinMaxScaler
-  _sklearn_version: 1.3.2
+  _sklearn_version: 1.4.0
   clip: false
   copy: true
   data_max_: !!python/object/apply:numpy.core.multiarray._reconstruct
