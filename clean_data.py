@@ -1,14 +1,13 @@
 import pandas as pd
 import numpy as np
+from matplotlib import pyplot as plt
 from sklearn.impute import SimpleImputer
 
 
 def main():
     df = pd.read_csv('data/coffee_data_raw.csv', index_col=0)
 
-    # delete column:
-    # 'Lot Number' due to large number of Null
-    # 'ICO Numer' is individual value
+    # delete columns:
     df = df.drop(['Lot_Number', 'ICO_Number', 'Harvest_Year', 'Grading_Date', 'Altitude', 'Certification_Body',
                   'Certification_Address', 'Certification_Contact', 'Expiration'], axis=1)
 
@@ -20,7 +19,7 @@ def main():
     df = clean_company(df)
     df = clean_region(df)
     df = clean_producer(df)
-    df = clean_num_bags(df)
+    # df = clean_num_bags(df)
     df = clean_bags_weight(df)
     df = clean_partner(df)
     df = clean_owner(df)
@@ -40,39 +39,55 @@ def main():
 
 
 def clean_country(df):
-    df['Country_of_Origin'] = df['Country_of_Origin'].fillna('Other')
+    df['Country_of_Origin'] = df['Country_of_Origin'].fillna('other')
+
+    df['Country_of_Origin'] = df['Country_of_Origin'].apply(lambda x: x.lower())
 
     # Replace 'Country of Origin' with less than 10 occurrences
     countries_counts = df['Country_of_Origin'].value_counts()
     countries_to_replace = countries_counts[countries_counts < 10].index
-    df.loc[df['Country_of_Origin'].isin(countries_to_replace), 'Country_of_Origin'] = 'Other'
+    df.loc[df['Country_of_Origin'].isin(countries_to_replace), 'Country_of_Origin'] = 'other'
 
     return df
 
 
 def clean_farm(df):
-    df['Farm_Name'] = df['Farm_Name'].fillna('Other')
+    df['Farm_Name'] = df['Farm_Name'].fillna('other')
+
+    df['Farm_Name'] = df['Farm_Name'].apply(lambda x: x.lower())
 
     return df
 
 
 def clean_mill(df):
-    df['Mill'] = df['Mill'].fillna('Other')
+    df['Mill'] = df['Mill'].fillna('other')
+
+    df['Mill'] = df['Mill'].apply(lambda x: x.lower())
+
     return df
 
 
 def clean_company(df):
     df['Company'] = df['Company'].fillna('Other')
+
+    df['Company'] = df['Company'].apply(lambda x: x.lower())
+
     return df
 
 
 def clean_region(df):
     df['Region'] = df['Region'].fillna('Other')
+
+    df['Region'] = df['Region'].apply(lambda x: x.lower())
+
     return df
 
 
 def clean_producer(df):
     df['Producer'] = df['Producer'].fillna('Other')
+
+    df['Producer'] = df['Producer'].apply(lambda x: x.lower())
+
     return df
 
 
@@ -92,6 +107,29 @@ def clean_bags_weight(df):
 
 
 def clean_partner(df):
+    df['In-Country_Partner'] = df['In-Country_Partner'].apply(lambda x: x.lower())
+
+    df['In-Country_Partner'] = (df['In-Country_Partner']
+                                .mask(
+        df['In-Country_Partner'].str.contains('blossom valley international.*'),
+        'blossom valley international'))
+    df['In-Country_Partner'] = (df['In-Country_Partner']
+                                .mask(
+        df['In-Country_Partner'].str.contains('specialty coffee ass.*'),
+        'specialty coffee association'))
+    df['In-Country_Partner'] = (df['In-Country_Partner']
+                                .mask(
+        df['In-Country_Partner'].str.contains('specialty coffee institute.*'),
+        'specialty coffee institute'))
+    df['In-Country_Partner'] = (df['In-Country_Partner']
+    .mask(
+        df['In-Country_Partner'].str.contains('almacaf.*'),
+        'almacaf'))
+
+    partner_counts = df['In-Country_Partner'].value_counts()
+    partner_to_replace = pd.DataFrame(partner_counts[partner_counts < 10]).index
+    df.loc[df['In-Country_Partner'].isin(partner_to_replace), 'In-Country_Partner'] = 'other'
+
     return df
 
 
@@ -101,26 +139,28 @@ def clean_owner(df):
 
 
 def clean_variety(df):
-    df['Variety'] = df['Variety'].fillna('Other')
+    df['Variety'] = df['Variety'].fillna('other')
 
-    df['Variety'] = df['Variety'].mask(df['Variety'].str.contains('SL28' or 'Sl28'), 'SL28')
-    df['Variety'] = df['Variety'].mask(df['Variety'].str.contains('SL34' or 'Sl34'), 'SL34')
-    df['Variety'] = df['Variety'].mask(df['Variety'].str.contains('unknown'), 'Other')
+    df['Variety'] = df['Variety'].apply(lambda x: x.lower())
+
+    df['Variety'] = df['Variety'].mask(df['Variety'].str.contains('unknown'), 'other')
 
     # Replace 'Variety' with less than 5 occurrences
     variety_counts = df['Variety'].value_counts()
     variety_to_replace = pd.DataFrame(variety_counts[variety_counts < 5]).index
-    df.loc[df['Variety'].isin(variety_to_replace), 'Variety'] = 'Other'
+    df.loc[df['Variety'].isin(variety_to_replace), 'Variety'] = 'other'
 
     return df
 
 
 def clean_processing(df):
-    df['Processing_Method'] = df['Processing_Method'].fillna('Other')
+    df['Processing_Method'] = df['Processing_Method'].fillna('other')
+
+    df['Processing_Method'] = df['Processing_Method'].apply(lambda x: x.lower())
 
     processing_methods_counts = df['Processing_Method'].value_counts()
     processing_methods_to_replace = pd.DataFrame(processing_methods_counts[processing_methods_counts < 5]).index
-    df.loc[df['Processing_Method'].isin(processing_methods_to_replace), 'Processing_Method'] = 'Other'
+    df.loc[df['Processing_Method'].isin(processing_methods_to_replace), 'Processing_Method'] = 'other'
 
     return df
 
@@ -139,14 +179,6 @@ def clean_moisture(df):
     df.loc[df["Moisture_Percentage"] > q3 + 1.5 * qr, "Moisture_Percentage"] = median_value
 
     return df
-
-
-# def clean_one_defect(df):
-#     return df
-#
-#
-# def clean_two_defect(df):
-#     return df
 
 
 def clean_quakers(df):
@@ -168,6 +200,7 @@ def clean_color(df):
     df['Color'] = df['Color'].fillna('Other')
 
     df['Color'] = df['Color'].apply(lambda x: x.lower())
+
     df['Color'] = df['Color'].mask(df['Color'].str.contains('bluish-green'), 'blue-green')
     df['Color'] = df['Color'].mask(df['Color'].str.contains('greenish'), 'green')
     df['Color'] = df['Color'].mask(df['Color'].str.contains('yellow green'), 'yellow-green')
@@ -185,7 +218,16 @@ def clean_total_points(df):
     index_to_remove = df[df['Total_Cup_Points'] == 0].index
     df = df.drop(index_to_remove, axis=0)
 
+    median_value = df['Total_Cup_Points'].median()
+
+    q1 = df['Total_Cup_Points'].quantile(0.25)
+    q3 = df['Total_Cup_Points'].quantile(0.75)
+    qr = q3 - q1
+    df.loc[df["Total_Cup_Points"] < q1 - 1.5 * qr, "Total_Cup_Points"] = median_value
+    df.loc[df["Total_Cup_Points"] > q3 + 1.5 * qr, "Total_Cup_Points"] = median_value
+
     return df
+
 
 if __name__ == '__main__':
     pd.set_option('display.max_rows', 1000)

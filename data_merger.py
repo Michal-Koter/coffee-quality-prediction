@@ -53,6 +53,12 @@ def main():
         return None
 
     df = df_dot._append(df_space, ignore_index=True)
+
+    original_labels = df.columns.values
+    new_labels = [re.sub(' ', '_', label) for label in original_labels]
+    label_mapper = dict(zip(original_labels, new_labels))
+    df = df.rename(label_mapper, axis='columns')
+
     df.to_csv('data/coffee_data_raw.csv')
 
 
