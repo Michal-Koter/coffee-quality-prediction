@@ -1,0 +1,76 @@
+Color:
+  blue-green: 2
+  brown: 5
+  green: 0
+  other: 1
+  yellow: 3
+  yellow-green: 4
+Country_of_Origin:
+  brazil: 2
+  china: 7
+  colombia: 17
+  costa rica: 8
+  el salvador: 18
+  ethiopia: 0
+  guatemala: 1
+  honduras: 11
+  indonesia: 6
+  kenya: 15
+  malawi: 20
+  mexico: 9
+  nicaragua: 13
+  other: 4
+  peru: 3
+  taiwan: 12
+  tanzania, united republic of: 14
+  thailand: 16
+  uganda: 10
+  united states (hawaii): 5
+  vietnam: 19
+In-Country_Partner:
+  africa fine coffee association: 12
+  almacaf: 4
+  amecafe: 7
+  "asociacion nacional del caf\xE9": 13
+  "asociaci\xF3n de caf\xE9s especiales de nicaragua": 17
+  blossom valley international: 6
+  "centro agroecol\xF3gico del caf\xE9 a.c.": 14
+  ethiopia commodity exchange: 3
+  "instituto hondure\xF1o del caf\xE9": 10
+  japan coffee exchange: 18
+  kenya coffee traders association: 11
+  metad agricultural development plc: 0
+  nucoffee: 8
+  other: 16
+  salvadoran coffee council: 15
+  specialty coffee association: 1
+  specialty coffee institute: 2
+  "taiwan coffee laboratory \u53F0\u7063\u5496\u5561\u7814\u7A76\u5BA4": 19
+  uganda coffee development authority: 9
+  yunnan coffee exchange: 5
+Processing_Method:
+  natural / dry: 2
+  other: 1
+  pulped natural / honey: 3
+  semi-washed / semi-pulped: 4
+  washed / wet: 0
+Variety:
+  arusha: 17
+  bourbon: 1
+  catimor: 2
+  catuai: 10
+  caturra: 3
+  ethiopian heirlooms: 18
+  gesha: 9
+  hawaiian kona: 6
+  java: 14
+  mundo novo: 13
+  other: 0
+  pacamara: 11
+  pacas: 16
+  peaberry: 15
+  sl14: 4
+  sl28: 8
+  sl34: 5
+  typica: 12
+  yellow bourbon: 7
