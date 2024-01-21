@@ -65,6 +65,8 @@ def main():
     train_df.to_csv('data/train_coffee_data.csv', index=False)
     test_df.to_csv('data/test_coffee_data.csv', index=False)
 
+    print("Data prepared successfully")
+
 
 if __name__ == '__main__':
     pd.set_option('display.max_columns', 500)

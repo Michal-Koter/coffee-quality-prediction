@@ -61,6 +61,8 @@ def main():
 
     df.to_csv('data/coffee_data_raw.csv')
 
+    print("Data merged successfully!")
+
 
 if __name__ == "__main__":
     main()

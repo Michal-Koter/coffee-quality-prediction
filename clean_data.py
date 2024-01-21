@@ -37,6 +37,8 @@ def main():
 
     df.to_csv('data/coffee_data_cleaned.csv')
 
+    print("Data cleaned successfully!")
+
 
 def clean_country(df):
     df['Country_of_Origin'] = df['Country_of_Origin'].fillna('other')
